@@ -3,7 +3,7 @@ ORIG_PN="xforms"
 VERSION=1.2.4
 RELEASE=1
 
-SRC_URI="http://download.savannah.nongnu.org/releases/${ORIG_PN}-${PV}.tar.gz"
+SRC_URI="http://download.savannah.nongnu.org/releases/${ORIG_PN}/${ORIG_PN}-${PV}.tar.gz"
 
 # PATCH_URI="no_undefined.patch"
 # PATCH_URI+=" weak_symbols.patch"
