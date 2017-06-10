@@ -1,0 +1,57 @@
+NAME="libforms"
+ORIG_PN="xforms"
+VERSION=1.2.4
+RELEASE=1
+
+SRC_URI="http://download.savannah.nongnu.org/releases/${ORIG_PN}-${PV}.tar.gz"
+
+# PATCH_URI="no_undefined.patch"
+# PATCH_URI+=" weak_symbols.patch"
+
+HOMEPAGE="http://xforms-toolkit.org/"
+SUMMARY="A forms library for X11"
+
+DESCRIPTION="This is a GUI toolkit based on the X library for X Window Systems.  It
+features a rich set of objects, such as buttons, sliders, and menus
+etc.  integrated into an easy and efficient object/event callback
+execution model that allows fast and easy construction of
+X-applications.  In addition, the library is extensible and new
+objects can easily be created and added to the library."
+
+
+PKG_NAMES="${PN}2
+  ${PN}-devel
+  ${PN}-doc
+"
+
+libforms2_CATEGORY="X11 Libs"
+libforms_devel_CATEGORY="X11 Devel"
+libforms_doc_CATEGORY="X11 Doc"
+
+libforms2_CONTENTS="usr/bin/cyg*-2.dll"
+
+libforms_devel_CONTENTS="
+  usr/bin/fd2ps.exe
+  usr/bin/fdesign.exe
+  usr/include
+  usr/lib
+  usr/share/man
+"
+
+libforms_doc_CONTENTS="
+
+"
+
+CYGCONF_ARGS="--enable-docs"
+
+DEPEND="libXpm-devel libGL-devel libjpeg-devel texinfo-tex ImageMagick"
+
+src_compile() {
+    cd ${S}
+    cygautoreconf
+    lndirs
+    CYGCONF_SOURCE=${B}
+    cd ${B}
+    TEXI2HTML='makeinfo --html' cygconf
+    cygmake
+}
