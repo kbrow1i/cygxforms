@@ -1,15 +1,11 @@
-NAME="libforms"
-ORIG_PN="xforms"
+NAME="xforms"
 VERSION=1.2.4
 RELEASE=1
 
-SRC_URI="http://download.savannah.nongnu.org/releases/${ORIG_PN}/${ORIG_PN}-${PV}.tar.gz"
-
-# PATCH_URI="no_undefined.patch"
-# PATCH_URI+=" weak_symbols.patch"
+SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
 HOMEPAGE="http://xforms-toolkit.org/"
-SUMMARY="A forms library for X11"
+SUMMARY="The XForms graphical interface widget library"
 
 DESCRIPTION="This is a GUI toolkit based on the X library for X Window Systems.  It
 features a rich set of objects, such as buttons, sliders, and menus
@@ -18,11 +14,7 @@ execution model that allows fast and easy construction of
 X-applications.  In addition, the library is extensible and new
 objects can easily be created and added to the library."
 
-
-PKG_NAMES="${PN}2
-  ${PN}-devel
-  ${PN}-doc
-"
+PKG_NAMES="libforms2 libforms-devel libforms-doc"
 
 libforms2_CATEGORY="X11 Libs"
 libforms_devel_CATEGORY="X11 Devel"
@@ -39,19 +31,21 @@ libforms_devel_CONTENTS="
 "
 
 libforms_doc_CONTENTS="
-
+  usr/share/doc
+  usr/share/info
 "
 
-CYGCONF_ARGS="--enable-docs"
+CYGCONF_ARGS="--enable-docs MAKEINFO=makeinfo"
 
 DEPEND="libXpm-devel libGL-devel libjpeg-devel texinfo-tex ImageMagick"
 
+# An out-of-tree build fails because generated headers in the build
+# directory aren't found.
 src_compile() {
     cd ${S}
     cygautoreconf
     lndirs
-    CYGCONF_SOURCE=${B}
     cd ${B}
-    TEXI2HTML='makeinfo --html' cygconf
+    cygconf
     cygmake
 }
