@@ -4,6 +4,9 @@ RELEASE=1
 
 SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
+PATCH_URI="fdesign.patch"
+PATCH_URI+=" texi2dvi_needs_pdf.patch"
+
 HOMEPAGE="http://xforms-toolkit.org/"
 SUMMARY="The XForms graphical interface widget library"
 
