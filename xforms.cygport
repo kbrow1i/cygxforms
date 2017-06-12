@@ -14,6 +14,7 @@ execution model that allows fast and easy construction of
 X-applications.  In addition, the library is extensible and new
 objects can easily be created and added to the library."
 
+# There's no "x" in the package names, per libforms.spec.
 PKG_NAMES="libforms2 libforms-devel libforms-doc"
 
 libforms2_CATEGORY="X11 Libs"
