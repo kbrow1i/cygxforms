@@ -31,6 +31,7 @@ xforms_CONTENTS=		# source only
 libforms2_CONTENTS="
   usr/bin/cyg*-2.dll
   usr/share/doc/xforms/ChangeLog
+  usr/share/doc/xforms/Copyright
   usr/share/doc/xforms/COPYING.LIB
   usr/share/doc/xforms/README
 "
@@ -64,4 +65,12 @@ src_compile() {
     cd ${B}
     cygconf
     cygmake
+}
+
+# cygport only checks for COPYRIGHT, so Copyright is not installed if
+# the build is done on a case-sensitive system.
+src_install() {
+    cd ${B}
+    cyginstall
+    dodoc ${S}/Copyright
 }

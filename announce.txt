@@ -1,0 +1,22 @@
+From cygwin-announce-xforms-1.2.4-1 Wed Jun 14 14:13:45 2017
+From: Ken Brown <kbrown@cornell.edu>
+To: cygwin-announce@cygwin.com
+Date: Wed, 14 Jun 2017 14:13:45 -0400
+Subject: New: xforms 1.2.4-1
+
+The following packages have been added to the Cygwin distribution:
+
+* xforms-1.2.4-1
+* libforms2-1.2.4-1
+* libforms-devel-1.2.4-1
+* libforms-doc-1.2.4-1
+
+XForms is a GUI toolkit based on the X library for X Window Systems.
+It features a rich set of objects, such as buttons, sliders, and menus
+etc., integrated into an easy and efficient object/event callback
+execution model that allows fast and easy construction of
+X-applications.  In addition, the library is extensible and new
+objects can easily be created and added to the library.
+
+Ken Brown
+Cygwin's XForms maintainer
