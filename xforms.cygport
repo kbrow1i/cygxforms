@@ -6,6 +6,7 @@ SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
 PATCH_URI="fdesign.patch"
 PATCH_URI+=" texi2dvi_needs_pdf.patch"
+PATCH_URI+=" html_doc.patch"
 
 HOMEPAGE="http://xforms-toolkit.org/"
 SUMMARY="The XForms graphical interface widget library"
@@ -17,14 +18,22 @@ execution model that allows fast and easy construction of
 X-applications.  In addition, the library is extensible and new
 objects can easily be created and added to the library."
 
-# There's no "x" in the package names, per libforms.spec.
-PKG_NAMES="libforms2 libforms-devel libforms-doc"
+# There's no "x" in the non-source package names, per libforms.spec.
+PKG_NAMES="${PN} libforms2 libforms-devel libforms-doc"
 
+xforms_CATEGORY="X11 Libs"
 libforms2_CATEGORY="X11 Libs"
 libforms_devel_CATEGORY="X11 Devel"
 libforms_doc_CATEGORY="X11 Doc"
 
-libforms2_CONTENTS="usr/bin/cyg*-2.dll"
+xforms_CONTENTS=		# source only
+
+libforms2_CONTENTS="
+  usr/bin/cyg*-2.dll
+  usr/share/doc/xforms/ChangeLog
+  usr/share/doc/xforms/COPYING.LIB
+  usr/share/doc/xforms/README
+"
 
 libforms_devel_CONTENTS="
   usr/bin/fd2ps.exe
@@ -35,13 +44,16 @@ libforms_devel_CONTENTS="
 "
 
 libforms_doc_CONTENTS="
-  usr/share/doc
+  usr/share/doc/xforms/html
+  usr/share/doc/xforms/xforms.pdf
   usr/share/info
 "
 
-CYGCONF_ARGS="--enable-docs MAKEINFO=makeinfo"
+CYGCONF_ARGS="--enable-docs TEXI2HTML=yes MAKEINFO=makeinfo"
 
 DEPEND="libXpm-devel libGL-devel libjpeg-devel texinfo-tex ImageMagick"
+
+DIFF_EXCLUDES="*.info*"
 
 # An out-of-tree build fails because generated headers in the build
 # directory aren't found.

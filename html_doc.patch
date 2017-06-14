@@ -1,0 +1,42 @@
+--- origsrc/xforms-1.2.4/doc/Makefile.am	2017-06-12 11:39:49.015374200 -0400
++++ src/xforms-1.2.4/doc/Makefile.am	2017-06-12 11:55:16.688690400 -0400
+@@ -85,11 +85,10 @@ uninstall-local:
+ # Makefile in 'xforms_images' will also copy the required figures into it
+ 
+ .texi.html:
+-	$(TEXI2HTML) --init-file xforms.init xforms.texi
+-	/bin/mkdir -p xforms.html
+-	mv index.html xforms_*.html xforms.html
+-	cp -r xforms.css xforms.html
+-	cp -r xforms_images xforms.html
++	$(MAKEINFOHTML) --init-file xforms.init --force xforms.texi
++	mv -f xforms xforms.html
++	cp -L xforms.css xforms.html
++	cp -rL xforms_images xforms.html
+ 
+ .texi.pdf:
+ 	if [ x$(TEXI2DVI_NEEDS_PDF) = "xyes" ]; then \
+--- origsrc/xforms-1.2.4/doc/xforms.texi	2014-06-28 16:34:29.000000000 -0400
++++ src/xforms-1.2.4/doc/xforms.texi	2017-06-12 11:40:21.885784900 -0400
+@@ -90,8 +90,9 @@
+ * Index of Constants::
+ @end ifnothtml
+ 
++@c Avoid producing Index.html, which conflicts with index.html.
+ @ifhtml
+-* Index::
++* Combined Index::
+ @end ifhtml
+ @end menu
+ 
+@@ -176,8 +177,8 @@
+ @syncodeindex vr fn
+ @syncodeindex tp fn
+ 
+-@node Index
+-@unnumbered Index
++@node Combined Index
++@unnumbered Combined Index
+ 
+ @printindex fn
+ 
