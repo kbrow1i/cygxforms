@@ -20,3 +20,6 @@ objects can easily be created and added to the library.
 
 Ken Brown
 Cygwin's XForms maintainer
+
+FIXME: xforms is source only with no prerequisites, so it won't be
+offered by setup.  How should I handle this in the next release?
