@@ -1,6 +1,6 @@
 NAME="xforms"
 VERSION=1.2.4
-RELEASE=1
+RELEASE=2
 
 SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
@@ -17,8 +17,6 @@ etc.  integrated into an easy and efficient object/event callback
 execution model that allows fast and easy construction of
 X-applications.  In addition, the library is extensible and new
 objects can easily be created and added to the library."
-
-# FIXME: Should xforms actually be listed?
 
 # There's no "x" in the non-source package names, per libforms.spec.
 PKG_NAMES="${PN} libforms2 libforms-devel libforms-doc"
